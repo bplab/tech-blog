@@ -4,11 +4,6 @@ categories:
   - blog
 tags:
   - blog
-  - tech
-  - backend
-  - frontend
-  - infra
-  - machine learning
 ---
 
 (주)블루프린트랩의 기술 블로그를 시작합니다.
