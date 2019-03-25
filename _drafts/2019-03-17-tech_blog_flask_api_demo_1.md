@@ -1,5 +1,5 @@
 ---
-title: "Dockerized Python  운영환경 정복하기 with Flask"
+title: "Dockerized Python  운영환경 정복하기 with Flask 1"
 tags:
   - docker
   - docker-compose
@@ -113,6 +113,7 @@ volumes는 *local_path:container_path* 로 값을 입력할 수 있습니다.
 **Window Soft Symbolick link** 문제 해결
 - window 10 이상부터 Guest OS의 shared folder를 symbolick link로 설정할 수 있습니다.
 - 기본적으로 admin권한만 설정되어있으므로 수동으로 사용자에게 권한을 주어야 합니다.
+
 ```
 1. window + R 버튼을 누른 후 secpol.msc 실행시킵니다.
 2. 로컬 정책의 사용자 권한 할당을 선택 후 심볼릭 링크 만들기를 클릭합니다.
@@ -174,6 +175,7 @@ python에서 필요한 dependencies를 정의하고 실제 설치를 해보도�
 필요한 python package를 pip를 이용하여 한번에 설치할 수 있습니다.  
 
 **requirements.txt 예제**
+
 ```
 Flask
 ```
@@ -283,6 +285,7 @@ flask 애플리케이션은 host 값을 default 값으로 실행시켰을시 127
 지정해줍니다.
 
 - **run-flask-api script 화면**  
+
 ![flask-run](/assets/images/2019-03-17/flask-run.png)
 
 - run-docker-compose script에서 설정한 5000번 포트로 docker-toolbox의 default ip
@@ -290,6 +293,7 @@ flask 애플리케이션은 host 값을 default 값으로 실행시켰을시 127
 docker for mac, window 는 localhost:5000으로 접속 가능합니다.
 
 - **Flask app 실행 화면**  
+
 ![flask-app](/assets/images/2019-03-17/flask-app.png)
 
  Project Dockerized Python  운영환경 정복하기 with Flask 의 Chapter 1이 끝났습니다.
