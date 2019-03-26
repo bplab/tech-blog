@@ -211,9 +211,23 @@ requirements에 있는 package를 설치합니다.
 
 ```
 1. window + R 버튼을 누른 후 secpol.msc 실행시킵니다.
-!!secpol 설치 과정 필요 window home version에서 필요!!
 2. 로컬 정책의 사용자 권한 할당을 선택 후 심볼릭 링크 만들기를 클릭합니다.
 3. 사용자 또는 그룹 추가에 사용자를 추가합니다.
+
+window home에서는 secpol.msc가 설치되어 있지 않습니다.
+아래의 명령어를 입력해야 secpol.msc가 설치 됩니다.
+
+echo "@echo off
+pushd \"%~dp0\"
+
+dir /b %SystemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientExtensions-Package~3*.mum >List.txt
+dir /b %SystemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientTools-Package~3*.mum >>List.txt
+
+for /f %%i in ('findstr /i . List.txt 2^>nul') do dism /online /norestart /add-package:\"%SystemRoot%\servicing\Packages\%%i\"
+pause" > gpedit-enabler.bat
+
+./gpedit-enabler.bat
+
 ```
 - - -
 
