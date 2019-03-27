@@ -139,10 +139,10 @@ script 를 실행시켰을 때 shell의 path가 /foo가 아닌 /foo/bar
 {proj_path}:/root/flask_api_demo 가 있습니다.
 volume의 host path의 의존성을 제거하기 위해 env 파일로 proj_path 값을
 현재 디렉토리 path로 설정하였습니다.
-- **docker-compose run --rm -p 5000:5000 api bash** : Docker container를
+- **docker-compose run \--rm -p 5000:5000 api bash** : Docker container를
 구동시키는 명령어 입니다.
 보통 docker-compose up의 명령어를 사용하지만 개발환경을 맞추기 위해 몇가지 옵션을 주었습니다.  
-*--rm* : container의 프로세스가 끝나면 자동으로 container를 삭제하는 옵션입니다.  
+*\--rm* : container의 프로세스가 끝나면 자동으로 container를 삭제하는 옵션입니다.  
 *-p* : docker container의 port 값을 설정합니다. host_port:container_port 로 입력합니다.  
 *api bash* : api는 docker-compose에 설정한 service 이름입니다.  
 bash는 api service container의 bash shell을 실행시킨다는 명령어입니다.
@@ -196,11 +196,9 @@ docker volume 설정으로 생긴 기존의 venv를 삭제하고 requirements.tx
 목록의 무결성을 보장합니다.
 - **python -m venv venv** : venv 모듈로 venv 폴더에 python 가상환경을 만듭니다.
 - **. venv/bin/activate** : Python 가상환경을 활성화 시키는 명령어입니다.
-- **python3 -m pip install --upgrade pip** : python package를 최신버전으로
+- **python3 -m pip install \--upgrade pip** : python package를 최신버전으로
 업그레이드 합니다.
-- **python3 -m pip install --trusted-host pypi.python.org -r $(pwd)/requirements.txt**
-: --trusted-host pypi.python.org는 SSL인증 오류를 해결하기 위한 명령어입니다.
-requirements에 있는 package를 설치합니다.
+- **python3 -m pip install \--trusted-host pypi.python.org -r $(pwd)/requirements.txt**: \--trusted-host pypi.python.org는 SSL인증 오류를 해결하기 위한 명령어입니다. requirements에 있는 package를 설치합니다.
 
 - **install-python-dependencies sciprt 실행 화면**  
 ![install-python](/assets/images/2019-03-17/install-python.png)
@@ -292,7 +290,7 @@ flask run --host 0.0.0.0
  `__name__`이 flask_api_demo로 설정됩니다.  
 - **export FLASK_ENV=development** : FLASK_ENV를 development를 설정하였을 경우
 log의 형식이 development형으로 나와 좀 더 자세한 log를 확인할 수 있습니다.
-- **flask run --host 0.0.0.0** : flask로 python을 실행시킵니다. --host명령은
+- **flask run \--host 0.0.0.0** : flask로 python을 실행시킵니다. \--host명령은
 flask 애플리케이션은 host 값을 default 값으로 실행시켰을시 127.0.0.1:5000
 즉, localhost:5000을 갖는데 docker container 외부에서 접근을 허용하기 위해 0.0.0.0으로
 지정해줍니다.
