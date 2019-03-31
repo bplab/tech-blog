@@ -1,5 +1,5 @@
 ---
-title: "Dockerized Python  운영환경 정복하기 with Flask 1"
+title: "Docker + Python  운영환경 정복하기 with Flask 1"
 tags:
   - docker
   - docker-compose
@@ -142,13 +142,14 @@ volume의 host path의 의존성을 제거하기 위해 env 파일로 proj_path 
 - **docker-compose run \--rm -p 5000:5000 api bash** : Docker container를
 구동시키는 명령어 입니다.
 보통 docker-compose up의 명령어를 사용하지만 개발환경을 맞추기 위해 몇가지 옵션을 주었습니다.  
-*\--rm* : container의 프로세스가 끝나면 자동으로 container를 삭제하는 옵션입니다.  
-*-p* : docker container의 port 값을 설정합니다. host_port:container_port 로 입력합니다.  
-*api bash* : api는 docker-compose에 설정한 service 이름입니다.  
-bash는 api service container의 bash shell을 실행시킨다는 명령어입니다.
+- *\--rm* : container의 프로세스가 끝나면 자동으로 container를 삭제하는 옵션입니다.  
+- *-p* : docker container의 port 값을 설정합니다. host_port:container_port 로 입력합니다.  
+- *api bash* : api는 docker-compose에 설정한 service 이름입니다.  
+- bash는 api service container의 bash shell을 실행시킨다는 명령어입니다.
 
 - **docker-compose 실행 화면**  
-![docker-compose](/assets/images/2019-03-17/docker-compose.png)
+
+![docker-compose](/assets/images/2019-03-17-tech_blog_flask_api_demo_1/docker-compose.png)
 
 이로써 Docker Setting이 끝났습니다. 다음으로는 본격적으로 Python을
 docker container상에서 다뤄보도록 하겠습니다.
@@ -200,8 +201,9 @@ docker volume 설정으로 생긴 기존의 venv를 삭제하고 requirements.tx
 업그레이드 합니다.
 - **python3 -m pip install \--trusted-host pypi.python.org -r $(pwd)/requirements.txt**: \--trusted-host pypi.python.org는 SSL인증 오류를 해결하기 위한 명령어입니다. requirements에 있는 package를 설치합니다.
 
-- **install-python-dependencies sciprt 실행 화면**  
-![install-python](/assets/images/2019-03-17/install-python.png)
+**install-python-dependencies sciprt 실행 화면**  
+
+![install-python](/assets/images/2019-03-17-tech_blog_flask_api_demo_1/install-python.png)
 
 **참고 Python library 설치 안될 시 Window Soft Symbolick link** 문제 해결
 - window 10 이상부터 Guest OS의 shared folder를 symbolick link로 설정할 수 있습니다.
@@ -295,17 +297,17 @@ flask 애플리케이션은 host 값을 default 값으로 실행시켰을시 127
 즉, localhost:5000을 갖는데 docker container 외부에서 접근을 허용하기 위해 0.0.0.0으로
 지정해줍니다.
 
-- **run-flask-api script 화면**  
+**run-flask-api script 화면**  
 
-![flask-run](/assets/images/2019-03-17/flask-run.png)
+![flask-run](/assets/images/2019-03-17-tech_blog_flask_api_demo_1/flask-run.png)
 
 - run-docker-compose script에서 설정한 5000번 포트로 docker-toolbox의 default ip
 주소인 192.168.99.100:5000에 접속 합니다.
 docker for mac, window 는 localhost:5000으로 접속 가능합니다.
 
-- **Flask app 실행 화면**  
+**Flask app 실행 화면**  
 
-![flask-app](/assets/images/2019-03-17/flask-app.png)
+![flask-app](/assets/images/2019-03-17-tech_blog_flask_api_demo_1/flask-app.png)
 
  Project Dockerized Python  운영환경 정복하기 with Flask 의 Chapter 1이 끝났습니다.
  수고하셨습니다. 박수!! 짝짝짝
