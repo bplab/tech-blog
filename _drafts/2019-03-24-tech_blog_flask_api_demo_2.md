@@ -41,7 +41,7 @@ Flask
 Flask_restful
 ```
 
-**<requirements 설치 화면>**  
+**requirements 설치 화면**  
 
 ![requirements](/assets/images/2019-03-24-tech_blog_flask_api_demo_2/requirments.png)
 
@@ -155,7 +155,7 @@ flask의 error handlers를 사용할 수 없게 됩니다. 이를 방지하기 �
 - **return app** : app에 정의 된 flask instance를 return 합니다.
 
 
-**<Project 구동 화면>**  
+**Project 구동 화면**  
 
 ![flask-restful](/assets/images/2019-03-24-tech_blog_flask_api_demo_2/flask-restful.png)
 
