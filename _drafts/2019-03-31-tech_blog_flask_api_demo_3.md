@@ -19,6 +19,9 @@ tags:
 - github: [https://github.com/bplab/flask_api_demo](https://github.com/bplab/flask_api_demo/tree/b2fc8986f4e38a3b6a1a34df39e904389378f45f)
 
 
+**part 1** : [Docker + Python  운영환경 정복하기 with Flask 1](../tech_blog_flask_api_demo_1)  
+**part 2** : [Docker + Python  운영환경 정복하기 with Flask 2](../tech_blog_flask_api_demo_2)
+
 ---
 
 ## Chapter 3 - Testing Codes for Authentication, Authorization
@@ -345,4 +348,4 @@ pytest -s -v --tb=short
 
 ![pytest](/assets/images/2019-03-31-tech_blog_flask_api_demo_3/pytest.png)  
 
-test case에 통과하지 못하였지만 이제 앞으로 저 빨간색 들이 초록색으로 변하는 날까지 꾸준히 포스팅 하도록 하겠습니다. 모두 수고 하셨습니다!!! 
+test case에 통과하지 못하였지만 이제 앞으로 저 빨간색 들이 초록색으로 변하는 날까지 꾸준히 포스팅 하도록 하겠습니다. 모두 수고 하셨습니다!!!

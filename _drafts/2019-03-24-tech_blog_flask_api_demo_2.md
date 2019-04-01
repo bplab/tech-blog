@@ -18,6 +18,7 @@ tags:
 - flask-api-demo
 - github: [https://github.com/bplab/flask_api_demo](https://github.com/bplab/flask_api_demo/tree/db436bb44382b5d0ba191b5bd33b7dbf9de02821)
 
+**part 1** : [Docker + Python  운영환경 정복하기 with Flask 1](../tech_blog_flask_api_demo_1)  
 
 ---
 
@@ -31,7 +32,7 @@ Flask-RESTful 라이브러리는 파이썬으로 만든 웹서비스에 REST API
 들어가기에 앞서 먼저 **RESTful** 이 무엇인지 알아야 합니다. RESTful을 알기위해선 **REST** 의 개념도 알아햐 합니다.
 
 - **REST** : 간단히 설명하면 웹사이트의 이미지나 텍스트 같은 모든 **자원(Resource)** 에
-HTTP URI를 부여하고 **HTTP Method** 를 통해 CRUD Operation을 적용하는 것을 의미합니다.
+HTTP URI를 부여하고 **HTTP Method** 를 통해 [CRUD](https://ko.wikipedia.org/wiki/CRUD) Operation을 적용하는 것을 의미합니다.
 
 그러면 먼저 Flask-RESTful을 설치하도록 하겠습니다.
 
@@ -41,13 +42,14 @@ Flask
 Flask_restful
 ```
 
+- requirements.txt에 Flask_restful을 추가함으로써 지난 포스팅에 만들어놓은 install-python-dependencies.sh를 통해 python conatiner에 Flask_restful을 설치합니다.
+- sh run-docker-compose.sh -> sh install-python-dependencies.sh 순서로 실행하면 됩니다.
+
+<br>
 **requirements 설치 화면**  
 
 ![requirements](/assets/images/2019-03-24-tech_blog_flask_api_demo_2/requirments.png)
 
-- requirements.txt에 Flask_restful을 추가함으로써 지난 포스팅에 만들어놓은  
-install-python-dependencies.sh를 통해 python conatiner에 Flask_restful을  
-설치합니다.
 
 > Flask_restful에 대한 자세한 설명은 **[Flask-RESTful](https://flask-restful.readthedocs.io/en/latest/)** 에서 확인할 수 있습니다.
 
@@ -146,10 +148,7 @@ def create_app():
 - **def create_app():** : create_app 함수를 정의합니다.
 - **app = Flask(__name__)** : app의 변수로 Flask 인스턴스를 정의합니다.
 - **api_foo = Api(foo_bp)** : flask_restful에서 import한 Api가 foo_bp(Blueprint)를 인자로 받습니다.
-- **handle_exception과 handle_user_exception** : Flask-RESTful을 사용하게 되면  
-flask의 error handlers를 사용할 수 없게 됩니다. 이를 방지하기 위하여  
-미리 error handler를 변수에 담아두고 Flask-restful api가 한번 호출이 있고 난 뒤에  
-다시 error handler를 복원 하는 부분입니다.  
+- **handle_exception과 handle_user_exception** : Flask-RESTful을 사용하게 되면 flask의 error handlers를 사용할 수 없게 됩니다. 이를 방지하기 위하여 미리 error handler를 변수에 담아두고 Flask-restful api가 한번 호출이 있고 난 뒤에 다시 error handler를 복원 하는 부분입니다.  
 - **api_foo.add_resource(Hello, '/')** : api를 정의합니다. 첫번째 인자로 foo.py에서 Import한 Hello를 받고 두번째 인자로 URL 경로를 입력해줍니다.
 - **app.register_blueprint(foo_bp)** : foo.py에서 생성한 Blueprint객체를 등록합니다. 큰 어플리케이션에서 모듈화 하기 쉽습니다. 향후에 다시 blueprints를 소개하도록 하겠습니다.
 - **return app** : app에 정의 된 flask instance를 return 합니다.
