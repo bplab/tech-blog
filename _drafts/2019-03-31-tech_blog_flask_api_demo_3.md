@@ -325,7 +325,8 @@ def test_secret_with_bad_header(tester):
 - User는 token을 header에 담아 request 보내는데 header의 형식이 정해져 있습니다. `{'Authorization' : 'Bearer <Access Token> }` 와 같습니다.
 - 전체적인 Test Case는 Token이 정상적일때와 비정상적일 때의 Case를 고려하였습니다.
 
-자 이제 거의 다 왔습니다... Test Case를 작성하는게 조금만 더하면 됩니다!!
+<br>
+자 이제 거의 다 왔습니다... 조금만 더하면 됩니다!!
 
 **run-pytest.sh 예제**
 ```
