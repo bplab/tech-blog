@@ -89,7 +89,7 @@ pytest
 - Flask에서 Mongo DB에 접근할 수 있는 Flask_PyMongo 와 Python test case를 실행시킬 수 있는 pytest package를 설치합니다.
 
 
-지난 포스팅에서 작성해놓았던 install-python-dependencies.sh 를 사용해서 설치하도록 합니다.
+지난 포스팅에서 작성해놓았던 `install-python-dependencies.sh` 를 사용해서 설치하도록 합니다.
 
 **2. config.py 예제**
 ```
@@ -121,7 +121,7 @@ class ProductionConfig(Config):
 
  **3. init.py 예제**
  ```
- from flask import Flask
+from flask import Flask
 from flask_restful import Api
 
 import config
@@ -171,11 +171,9 @@ test case 작성에 앞서 **인증** 에 대한 간단한 설명을 하도록 �
 
 **인증** 이란 Resource를 사용하는 User의 신원을 확인하는 일 입니다. 웹 서비스에 로그인을 통해 인증을 받으면 권한 내에서 자유롭게 웹 서비스 Resource를 사용할 수 있게 됩니다. 웹 서비스에서 User의 인증 방식은 크게 두가지로 나뉩니다.
 
-- 서버 기반 인증
-서버 기반 인증은 서버에 인증 기록을 저장하는 방식입니다. 서버에 저장된 것을 **세션** 이라 부르고 세션이 많아진다면 서버가 과부하가 걸릴 수 있습니다. 즉 다시말해 로그인 하는 User수가 많아 질 수록 서버 성능에 영향을 끼치는 것 입니다.
+1. **서버 기반 인증**: 서버 기반 인증은 서버에 인증 기록을 저장하는 방식입니다. 서버에 저장된 것을 **세션** 이라 부르고 세션이 많아진다면 서버가 과부하가 걸릴 수 있습니다. 즉 다시말해 로그인 하는 User수가 많아 질 수록 서버 성능에 영향을 끼치는 것 입니다.
 
-- 토큰 기반 인증
-토큰 기반 인증은 서버가 인증 기록을 세션에 담아두지 않습니다. 서버측에서 User 정보를 검증 후 User에게 토큰을 발급하고 이 토큰을 User가 사용하여 로그인 할때마다 해당 토큰을 헤더에 담아 request 합니다.
+2. **토큰 기반 인증**: 토큰 기반 인증은 서버가 인증 기록을 세션에 담아두지 않습니다. 서버측에서 User 정보를 검증 후 User에게 토큰을 발급하고 이 토큰을 User가 사용하여 로그인 할때마다 해당 토큰을 헤더에 담아 request 합니다.
 
 
 저희는 토큰 기반 인증으로 인증을 진행하며 웹 표준인 JWT를 사용하여 test case를 작성해보도록 하겠습니다. 저희는 pytest를 사용하였으며 본격적으로 python test case를 작성해보도록 하겠습니다.
