@@ -67,22 +67,22 @@ Flask_restful
 - 지난번의 project 구조와 현재의 project 구조를 간략하게 표현 해봤습니다.
 
 ```                               
-Project +                                     Project +
-        |                                             |
-        |                                             |
-        /flask_api_demo +                             /flask_api_demo +
-        |               |                             |               |
-        |               + __init__.py                 |               /resource + __init__.py
-        |                                             |               |         + foo.py
-        + docker-compose.yml                          |               |         
-        + install-python-dependencies.sh              |               + __init__.py           
-        + README.md                                   |               
-        + requirements.txt                            + docker-compose.yml
-        + run-docker-compose.sh                       + install-python-dependencies.sh
-        + run-flask-api.sh                            + README.md
-                                                      + requirements.txt
-                                                      + run-docker-compose.sh
-                                                      + run-flask-api.sh  
+Project +                                          Project +
+        |                                                  |
+        |                                                  |
+        /flask_api_demo +                                  /flask_api_demo +
+        |               |                                  |               |
+        |               + __init__.py                      |               /resource + __init__.py
+        |                                                  |               |         + foo.py
+        + docker-compose.yml                               |               |         
+        + install-python-dependencies.sh                   |               + __init__.py           
+        + README.md                                        |               
+        + requirements.txt                                 + docker-compose.yml
+        + run-docker-compose.sh                            + install-python-dependencies.sh
+        + run-flask-api.sh                                 + README.md
+                                                           + requirements.txt
+                                                           + run-docker-compose.sh
+                                                           + run-flask-api.sh  
 ```
 
 - 구조를 비교해 보았을때 /resource 디렉토리가 추가된 것을 확인 할 수 있습니다.
@@ -155,6 +155,11 @@ def create_app():
 
 
 **Project 구동 화면**  
+
+![flask-run](/assets/images/2019-03-24-tech_blog_flask_api_demo_2/flask-run.png)  
+
+- 먼저 `run-flask-api.sh` 로 flask를 실행시킵니다.  
+- Docker-toolbox는 192.168.99.100:5000 , Docker for Mac, Window는 localhost:5000으로 접속합니다.
 
 ![flask-restful](/assets/images/2019-03-24-tech_blog_flask_api_demo_2/flask-restful.png)
 
