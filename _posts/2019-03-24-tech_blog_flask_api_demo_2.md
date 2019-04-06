@@ -66,7 +66,7 @@ Flask_restful
 **Project 구조 변화**
 - 지난번의 project 구조와 현재의 project 구조를 간략하게 표현 해봤습니다.
 
-![project](/assets/images/2019-03-24-tech_blog_flask_api_demo_2/project.png)  
+![project](/assets/images/2019-03-24-tech_blog_flask_api_demo_2/project.PNG)  
 
 - 구조를 비교해 보았을때 /resource 디렉토리가 추가된 것을 확인 할 수 있습니다.
 - /resource의 foo.py는 Blueprint를 적용 하는 부분입니다.
