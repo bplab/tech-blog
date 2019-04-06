@@ -66,24 +66,7 @@ Flask_restful
 **Project 구조 변화**
 - 지난번의 project 구조와 현재의 project 구조를 간략하게 표현 해봤습니다.
 
-```                               
-Project +                                                          Project +
-        |                                                                  |
-        |                                                                  |
-        /flask_api_demo +                                                  /flask_api_demo +
-        |               |                                                  |               |
-        |               + __init__.py                                      |               /resource + __init__.py
-        |                                                                  |               |         + foo.py
-        + docker-compose.yml                                               |               |         
-        + install-python-dependencies.sh                                   |               + __init__.py           
-        + README.md                                                        |               
-        + requirements.txt                                                 + docker-compose.yml
-        + run-docker-compose.sh                                            + install-python-dependencies.sh
-        + run-flask-api.sh                                                 + README.md
-                                                                           + requirements.txt
-                                                                           + run-docker-compose.sh
-                                                                           + run-flask-api.sh  
-```
+![project](/assets/images/2019-03-24-tech_blog_flask_api_demo_2/project.png)  
 
 - 구조를 비교해 보았을때 /resource 디렉토리가 추가된 것을 확인 할 수 있습니다.
 - /resource의 foo.py는 Blueprint를 적용 하는 부분입니다.
