@@ -115,7 +115,7 @@ pytest
 지난 포스팅에서 작성해놓았던 `install-python-dependencies.sh` 를 사용해서 설치하도록 합니다.
 
 **2. config.py 예제**
-```
+```python
 class Config(object):
     DEBUG = False
     TESTING = False
@@ -143,7 +143,7 @@ class ProductionConfig(Config):
  여기까지 config.py를 구성하였고 실제로 python code에서 어떻게 쓰이는지 알아보겠습니다.
 
  **3. init.py 예제**
- ```
+ ```python
 from flask import Flask
 from flask_restful import Api
 
@@ -198,7 +198,7 @@ Test Code에서 토큰 기반 인증으로 인증을 진행하며 웹 표준인 
 
 **1.conftest.py 예제**
 
-```
+```python
 import pytest
 import json
 
@@ -256,7 +256,7 @@ def jwt(tester):
 
 **2. test_foo.py 예제**
 
-```
+```python
 def test_hello_ok(tester):
     resp = tester.get(
         '/tests/hello',

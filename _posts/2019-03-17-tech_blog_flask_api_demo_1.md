@@ -238,7 +238,7 @@ flask를 사용하여 hello world를 화면에 띄우는 예제성 코드를 작
 ### 4-1 flask_api_demo/`__init__.py` 작성
 - `__init__.py` 예제
 
-```
+```python
 from flask import Flask
 
 

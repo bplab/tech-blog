@@ -98,7 +98,7 @@ Blueprint를 사용할 수 있도록 합니다.
 다음으로 /flaks_api_demo 디렉토리의 `__inti__.py`를 살펴보도록 하겠습니다.
 
 **__init__.py**
-```
+```python
 from flask import Flask
 from flask_restful import Api
 
