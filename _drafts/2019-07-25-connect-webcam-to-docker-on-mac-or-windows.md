@@ -2,6 +2,7 @@
 title: "Mac 또는 Windows 환경에서 webcam을 Docker에 연결하기"
 tags:
   - docker
+  - boot2docker
   - mac
   - windows
   - webcam
@@ -17,7 +18,7 @@ Mac 또는 Windows 환경에서 webcam을 Docker에 연결하는 것은 자주 �
 - [개요](#개요)
   - [상황 1](#상황-1)
   - [상황 2](#상황-2)
-  - [상황 정리](#상황-정리)
+  - [문제점](#문제점)
 - [해결 방안 제시](#해결-방안-제시)
   - [MacOS](#MacOS)
   - [Windows](#Windows)
@@ -32,13 +33,13 @@ Mac 또는 Windows 환경에서 webcam을 Docker에 연결하는 것은 자주 �
 
 ### 상황 1
 
-보유한 Linux 머신이나 임대한 Cloud 환경에서 코드를 실행해볼 수도 있겠지만 랩탑을 사용하고, 작업 환경의 자유도가 높은 상황이라면 자연스럽게 [Docker](https://www.docker.com/)에 관심을 가지고, 가상환경에서 Ubuntu와 같은 다른 운영체제를 사용할 수 있습니다.
+보유한 Linux 머신이나 임대한 Cloud 환경에서 코드를 실행해볼 수도 있겠지만 랩탑을 사용하고 작업 환경의 자유도가 높은 상황이라면 자연스럽게 [Docker](https://www.docker.com/)에 관심을 가지게 되어 가상환경에서 Ubuntu와 같은 다른 운영체제를 사용할 수 있습니다.
 
 ### 상황 2
 
 팀에서 Ubuntu 환경을 사용하는 Machine Learning pipeline을 개발 해야하는데 서로 다른 운영체제를 사용하고 있다면, 같은 환경을 맞춰줘야 의도치 않은 오류를 줄일 수 있겠죠. 마찬가지로 자연스럽게 [Docker]((https://www.docker.com/))를 사용하게 됩니다.
 
-### 상황 정리
+### 문제점
 
 __상황 1__ 과 __상황 2__ 는 Docker 환경을 써야하는 공통점이 있습니다.
 
