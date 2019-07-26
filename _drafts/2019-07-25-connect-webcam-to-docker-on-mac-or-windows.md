@@ -2,6 +2,7 @@
 title: "Mac 또는 Windows 환경에서 webcam을 Docker에 연결하기"
 tags:
   - docker
+  - toolbox
   - boot2docker
   - mac
   - windows
@@ -20,9 +21,10 @@ Mac 또는 Windows 환경에서 webcam을 Docker에 연결하는 것은 자주 �
   - [상황 2](#상황-2)
   - [문제점](#문제점)
 - [해결 방안 제시](#해결-방안-제시)
-  - [MacOS](#MacOS)
-  - [Windows](#Windows)
+  - [MacOS](#macos)
+  - [Windows](#windows)
 - [정리](#정리)
+  - [Webcam 테스트](#webcam-테스트)
   - [결론](#결론)
   - [요약](#요약)
 - [참고](#참고)
@@ -68,7 +70,7 @@ open -a XQuartz
 
 __XQuartz Preferecens__ 에서 아래의 그림과 같이 체크박스 선택을 해줍니다.
 
-![X11 preferecnes](../assets/images/2019-07-25-connect-webcam-to-docker-on-mac-or-windows/setting-xquartz-preferences.png)
+![X11 preferecnes](../assets/images/2019-07-25-connect-webcam-to-docker-on-mac-or-windows/mac-setting-xquartz-preferences.png)
 
 다시 __터미널 1__ 에서 아래와 같은 script를 실행시켜 줍니다.
 
@@ -109,10 +111,10 @@ docker-machine이 정지되었다면, VirtualBox를 실행하여 아래의 그�
 
 > 미리 설치되어 있는 환경이라 이미지의 개수와 이름이 다를 수 있고, memory가 다를 수도 있습니다.
 
-![virtualbox](../assets/images/2019-07-25-connect-webcam-to-docker-on-mac-or-windows/virtualbox.png)
-![setting display](../assets/images/2019-07-25-connect-webcam-to-docker-on-mac-or-windows/virtualbox-setting-display.png)
-![setting ports](../assets/images/2019-07-25-connect-webcam-to-docker-on-mac-or-windows/virtualbox-setting-ports.png)
-![setting shared folders](../assets/images/2019-07-25-connect-webcam-to-docker-on-mac-or-windows/virtualbox-setting-shared-folders.png)
+![mac virtualbox](../assets/images/2019-07-25-connect-webcam-to-docker-on-mac-or-windows/mac-virtualbox.png)
+![mac virtualbox display](../assets/images/2019-07-25-connect-webcam-to-docker-on-mac-or-windows/mac-virtualbox-display.png)
+![mac virtualbox ports](../assets/images/2019-07-25-connect-webcam-to-docker-on-mac-or-windows/mac-virtualbox-ports.png)
+![mac virtualbox shared folders](../assets/images/2019-07-25-connect-webcam-to-docker-on-mac-or-windows/mac-virtualbox-shared-folders.png)
 
 드디어 기본적인 환경 구성은 끝났습니다! 이제부터 webcam을 사용하고 싶을 때 매번 수행해야하는 과정들입니다.
 
@@ -125,12 +127,14 @@ docker-machine이 정지되었다면, VirtualBox를 실행하여 아래의 그�
 6. __터미널 1__ `docker-machine start ${DOCKER_MACHINE}`
 7. __터미널 1__ `eval $(docker-machine env ${DOCKER_MACHINE})`
 8. __터미널 1__ `vboxmanage list webcams` 결과 확인
+
     ```sh
     # choose one or all if you want (two cameras in my case)
     Video Input Devices: 2
     .1 "USB Camera"
     .2 "FaceTime HD Camera"
     ```
+
 9. __터미널 1__ `vboxmanage controlvm "${DOCKER_MACHINE}" webcam attach .1` 또는 `.2` 또는 둘 다
 
 이제 __터미널 1__ 에서 원하는 docker image를 가지고 실행하면 됩니다.
@@ -156,12 +160,6 @@ docker run --rm -it --device=/dev/video0:/dev/video0 \
 
 > 이 글에서는 docker 명령어에 대해 자세히 설명하지 않겠습니다.
 
-아래는 `dlib` [4][4]의 예제를 실행시킨 결과입니다.
-
-![webcam test](../assets/images/2019-07-25-connect-webcam-to-docker-on-mac-or-windows/webcam-test.gif)
-
-이제 Mac에서도 webcam을 Docker에 연결하여 사용할 수 있습니다. 😁👍🏼
-
 ### Windows
 
 > 참고로 Window 10 Home에서 따라해볼 수 있는 환경입니다. Pro와 Enterprise에서는 확인해보지 않았습니다.
@@ -171,18 +169,21 @@ Windows에서는 MacOS와 다르게 [Docker Toolbox on Windows](https://docs.doc
 Docker Toolbox는 `C:\Program Files\Docker Toolbox` 경로에 설치되고 나면, 시작 메뉴에서 __Docker Quickstart Terminal__ 을 실행시켜 줍니다.
 그러면, VirtualBox에서 default라는 이름의 가상 환경을 시작하게 되는데 처음 실행하는 것이라면, 가상 환경을 만드느라 다소 시간이 걸립니다.
 
-![docker quickstart terminal](../assets/images/2019-07-25-connect-webcam-to-docker-on-mac-or-windows/docker-quickstart-terminal.png)
+![docker quickstart terminal](../assets/images/2019-07-25-connect-webcam-to-docker-on-mac-or-windows/windows-docker-quickstart-terminal.png)
 
 아쉽게도 Docker Quickstart Terminal을 처음 시작할 때 사용하는 [boot2docker](https://github.com/boot2docker/boot2docker)의 이미지는 webcam을 쓸 수 없기 때문에 새로운 가상 환경을 만들어줘야 합니다.
 기존의 __default__ 이름으로 사용하느냐 새로운 이름을 지정해서 사용하느냐는 선택하시면 됩니다. Docker Toolbox Terminal에서 다음과 같이 실행해주세요.
 
 - default 이름 사용
+
   ```sh
   docker-machine stop default
   docker-machine rm default
   DOCKER_MACHINE=default
   ```
+
 - __(권장)__ 새로운 이름 사용
+
   ```sh
   docker-machine stop default
   # name of docker-machine, possible to change the name if you want
@@ -202,7 +203,7 @@ docker-machine create -d virtualbox \
 
 아래의 그림을 보면, 두 가지의 가상 환경이 있고 새로 만든 가상 환경인 __webcam__ 은 `STATE`가 `Running`인데 `ACTIVE`는 `-` 표시로 되어 있습니다. 꼭 확인하고 `eval $(docker-machine env ${DOCKER_MACHINE})` 명령어를 실행해 주세요.
 
-![docker quickstart terminal](../assets/images/2019-07-25-connect-webcam-to-docker-on-mac-or-windows/eval-docker-machine.png)
+![docker quickstart terminal](../assets/images/2019-07-25-connect-webcam-to-docker-on-mac-or-windows/windows-eval-docker-machine.png)
 
 다시 그림을 보면, `ACTIVE`에서 `*`로 바뀌어 있고, `URL`을 확인할 수 있습니다. 이 경우엔 `192.168.99.103`이지만 상황에 따라 다른 주소값을 가지고 있을 수 있습니다. 아래의 명령어로 확인해주세요.
 
@@ -230,8 +231,8 @@ docker-machine stop ${DOCKER_MACHINE}
 
 위와 같이 docker-machine을 중지하고, 아래의 그림과 같이 VirtualBox 해당 가상 환경에서 설정을 해주세요.
 
-![virtualbox display](../assets/images/2019-07-25-connect-webcam-to-docker-on-mac-or-windows/windows-virtualbox-display.png)
-![virtualbox usb](../assets/images/2019-07-25-connect-webcam-to-docker-on-mac-or-windows/windows-virtualbox-usb.png)
+![windows virtualbox display](../assets/images/2019-07-25-connect-webcam-to-docker-on-mac-or-windows/windows-virtualbox-display.png)
+![windows virtualbox usb](../assets/images/2019-07-25-connect-webcam-to-docker-on-mac-or-windows/windows-virtualbox-usb.png)
 
 이제 Windows의 기본 환경 구성은 끝났습니다. 이제부터 webcam을 사용하고 싶을 때 매번 수행해야하는 과정들입니다.
 
@@ -241,12 +242,14 @@ docker-machine stop ${DOCKER_MACHINE}
     - 만약 __default__ 로 구성하였다면, 3번 무시
 4. `eval $(docker-machine env ${DOCKER_MACHINE})`
 5. `"/c/Program Files/Oracle/VirtualBox/VBoxManage" list webcams` 결과 확인
+
     ```sh
     # choose one or all if you want (two cameras in my case)
     Video Input Devices: 2
     .1 "c922 Pro Stream Webcam"
     .2 "Logi Capture"
     ```
+
 6. `"/c/Program Files/Oracle/VirtualBox/VBoxManage" controlvm "${DOCKER_MACHINE}" webcam attach .1` 또는 `.2` 또는 둘 다
 7. __Xming__ 실행
 
@@ -269,15 +272,23 @@ docker run --rm -it --device=/dev/video0:/dev/video0 \
   ${DOCKER_IMAGE}
 ```
 
-아래는 MacOS와 똑같이 `dlib` [4][4]의 예제를 실행시킨 결과이고, 화면 녹화 프로그램을 쓰지 않고 캡쳐만 했습니다.
-
-<img src="../assets/images/2019-07-25-connect-webcam-to-docker-on-mac-or-windows/windows-webcam-test.png" width=500>
+아래는 `dlib` [4][4]의 예제를 실행시킨 결과이고, Windows의 경우 화면 녹화 프로그램을 쓰지 않고 캡쳐만 했습니다.
 
 ## 정리
 
+### Webcam 테스트
+
+아래는 `dlib` [4][4]의 예제를 실행시킨 결과입니다.
+
+| MacOS | Windows |
+|:-----:|:-------:|
+| ![mac webcam test](../assets/images/2019-07-25-connect-webcam-to-docker-on-mac-or-windows/mac-webcam-test.gif) | ![windows webcam test](../assets/images/2019-07-25-connect-webcam-to-docker-on-mac-or-windows/windows-webcam-test.png) |
+
+이제 Mac과 Windows에서도 webcam을 Docker에 연결하여 사용할 수 있습니다. 😁👍🏼
+
 ### 결론
 
-Mac이나 Windows에서 Webcam을 Docker와 연결시키는 것은 불가능한 것은 아닙니다. 다만, 최신 버전의 [boot2docker](https://github.com/boot2docker/boot2docker/releases)를 사용하지 않아 생길 수 있는 불편함이 있습니다. 또한, 이 글에서 제시한 방법 뿐만 아니라 Mac의 경우 [Parallels](https://www.parallels.com/)의 kernel을 이용할 수도 있고, Windows는 Pro나 Enterprise에서 실제 사용해보지 않아 동작한다고 확신할 수 없습니다.
+Mac이나 Windows에서 Webcam을 Docker와 연결시키는 것은 불가능한 것은 아닙니다. 다만, 최신 버전의 [boot2docker](https://github.com/boot2docker/boot2docker/releases)를 사용하지 않아 생길 수 있는 불편함이 있습니다. 또한, 이 글에서 제시한 방법 뿐만 아니라 Mac의 경우 [Parallels](https://www.parallels.com/)의 kernel을 이용할 수도 있고, Windows는 Pro나 Enterprise의 [Hyper-V](https://docs.microsoft.com/ko-kr/virtualization/hyper-v-on-windows/about/) 실제 사용해보지 않아 동작한다고 확신할 수 없습니다.
 
 그럼에도 불구하고, Docker 환경을 통해 Webcam 또는 Camera를 제어할 수 있는 점은 참 매력적이고, 서로 다른 운영체제에서 개발을 해야하는 조직이라면 분명히 도움이 될 것입니다.
 
