@@ -272,13 +272,11 @@ docker run --rm -it --device=/dev/video0:/dev/video0 \
   ${DOCKER_IMAGE}
 ```
 
-아래는 `dlib` [4][4]의 예제를 실행시킨 결과이고, Windows의 경우 화면 녹화 프로그램을 쓰지 않고 캡쳐만 했습니다.
-
 ## 정리
 
 ### Webcam 테스트
 
-아래는 `dlib` [4][4]의 예제를 실행시킨 결과입니다.
+아래는 `dlib` [4][4]의 예제를 실행시킨 결과이고, Windows의 경우 화면 녹화 프로그램을 쓰지 않고 캡쳐만 했습니다.
 
 | MacOS | Windows |
 |:-----:|:-------:|
