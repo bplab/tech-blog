@@ -333,7 +333,7 @@ Mac이나 Windows에서 Webcam을 Docker와 연결시키는 것은 불가능한 
 - https://github.com/bplab/boot2docker-webcam-mac
 - https://github.com/Alexoner/boot2docker
 - https://docs.docker.com
-- https://www.virtualbox.org/manual/UserManual.html
+- https://www.virtualbox.org/manual
 - https://vtluug.org/wiki/Socat
 - https://www.xquartz.org
 - http://www.straightrunning.com/XmingNotes
